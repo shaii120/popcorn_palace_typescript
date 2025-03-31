@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: popcorn-palace
+      POSTGRES_PASSWORD: popcorn-palace
+      POSTGRES_DB: popcorn-palace
+    #  volumes:
+    #   - type: bind
+    #     source: ./data
+    #     target: /var/lib/postgresql/data --> in case u need to save data to local storage
+    ports:
+      - target: 5432
+        published: 5432
+        protocol: tcp
+
+  nestjs_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      - PORT=3000
+      - NODE_ENV=DEV
+      - PG_PORT=5432
+      - PG_USER=popcorn-palace
+      - PG_PASSWORD=popcorn-palace
+      - PG_DB=popcorn-palace
+    volumes:
+      - ./src:/app/src

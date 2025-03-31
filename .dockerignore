@@ -1,0 +1,10 @@
+dist
+node_modules
+.dockerignore
+.eslintrc.js
+.gitignore
+.prettierrc
+compose.yml
+Dockerfile
+Instructions.md
+README.md
