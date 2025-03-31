@@ -5,7 +5,7 @@ export const pgConfig: PostgresConnectionOptions = {
     host: 'db',
     port: +process.env.PG_PORT,
     database: "popcorn-palace",
-    entities: [__dirname + './**/*.entity.{js,ts}'],
+    entities: [__dirname + '/**/*.entity.{js,ts}'],
     username: "popcorn-palace",
     password: "popcorn-palace",
     synchronize: process.env.NODE_ENV === 'DEV'

@@ -6,7 +6,6 @@ import { MoviesModule } from './movies/movies.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { pgConfig } from 'dbConfig';
 
-console.log(pgConfig)
 @Module({
   imports: [ShowtimesModule, MoviesModule, TypeOrmModule.forRoot(pgConfig)],
   controllers: [AppController],

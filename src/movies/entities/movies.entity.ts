@@ -14,7 +14,7 @@ export class Movie {
     @Column()
     duration: number
 
-    @Column()
+    @Column({ type: 'real' })
     rating: number
 
     @Column()
