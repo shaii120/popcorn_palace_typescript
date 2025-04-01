@@ -16,14 +16,24 @@ export class MoviesService {
     }
 
     async addMovie(movie: CreateMovieDto) {
-        return await this.movieRepo.save(movie)
+        try {
+            return await this.movieRepo.save(movie)
+        }
+        catch (error) {
+            return error.driverError
+        }
     }
 
     async updateMovie(movieTitle: string, updatedMovie: UpdateMovieDto) {
-        return await this.movieRepo.update({ title: movieTitle }, updatedMovie)
+        try {
+            await this.movieRepo.update({ title: movieTitle }, updatedMovie)
+        }
+        catch (error) {
+            return error.driverError
+        }
     }
 
     async deleteMovie(title: string) {
-        return await this.movieRepo.delete({ title: title })
+        await this.movieRepo.delete({ title: title })
     }
 }

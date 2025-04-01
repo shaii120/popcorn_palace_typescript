@@ -20,7 +20,9 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '3000:3000'
+      - 3000:3000
+      #debug port
+      - 9229:9229
     environment:
       - PORT=3000
       - NODE_ENV=DEV

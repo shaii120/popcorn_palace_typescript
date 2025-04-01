@@ -14,17 +14,16 @@ export class MoviesController {
 
     @Post()
     addMovie(@Body(ValidationPipe) movie: CreateMovieDto) {
-        // console.log(movie)
         return this.moviesService.addMovie(movie);
     }
 
     @Post('update/:movieTitle')
     updateMovie(@Param('movieTitle') movieTitle: string, @Body(ValidationPipe) movie: UpdateMovieDto) {
-        this.moviesService.updateMovie(movieTitle, movie);
+        return this.moviesService.updateMovie(movieTitle, movie);
     }
 
     @Delete(':movieTitle')
     deleteMovie(@Param('movieTitle') movieTitle: string) {
-        this.moviesService.deleteMovie(movieTitle);
+        return this.moviesService.deleteMovie(movieTitle);
     }
 }

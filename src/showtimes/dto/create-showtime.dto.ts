@@ -12,8 +12,8 @@ export class CreateShowtimeDto {
   theater: string
 
   @IsDateString()
-  startTime: string
+  startTime: Date
 
   @IsDateString()
-  endTime: string
+  endTime: Date
 }
