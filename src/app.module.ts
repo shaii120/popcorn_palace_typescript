@@ -5,9 +5,13 @@ import { ShowtimesModule } from './showtimes/showtimes.module';
 import { MoviesModule } from './movies/movies.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { pgConfig } from 'dbConfig';
+import { BookingsModule } from './bookings/bookings.module';
 
 @Module({
-  imports: [ShowtimesModule, MoviesModule, TypeOrmModule.forRoot(pgConfig)],
+  imports: [ShowtimesModule,
+    MoviesModule,
+    BookingsModule,
+    TypeOrmModule.forRoot(pgConfig)],
   controllers: [AppController],
   providers: [AppService],
 })
