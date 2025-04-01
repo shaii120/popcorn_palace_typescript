@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -20,7 +20,7 @@ export class MoviesService {
             return await this.movieRepo.save(movie)
         }
         catch (error) {
-            return error.driverError
+            throw new BadRequestException(`${error.driverError.detail}`)
         }
     }
 
@@ -29,7 +29,7 @@ export class MoviesService {
             await this.movieRepo.update({ title: movieTitle }, updatedMovie)
         }
         catch (error) {
-            return error.driverError
+            throw new BadRequestException(`${error.driverError.detail}`)
         }
     }
 
